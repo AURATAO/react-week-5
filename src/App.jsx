@@ -15,6 +15,7 @@ const App =() =>{
   const [tempProduct, setTempProduct] = useState([]);
   const [cart, setCart] =useState({});
   const [isLoading, setIsLoading] = useState(false);
+  
   const getCart = async() =>{
     try {
       const res = await axios.get(
@@ -122,7 +123,8 @@ const App =() =>{
       )
       getCart();
     }catch(error){
-      alert('刪除購物車失敗')
+      alert('刪除購物車失敗');
+      console.error(error)
     }
   }
 
@@ -156,7 +158,7 @@ const App =() =>{
     try {
       axios.post(`${BASE_URL}/api/${API_PATH}/order`, data)
     } catch (error) {
-      
+      console.error(error);
     }
   }
 
